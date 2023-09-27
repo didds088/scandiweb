@@ -1,0 +1,69 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.hidden{
+	display: none !important;
+}
+#heading::first-letter {
+	font-family: cursive ;
+	color: #DC3545;
+	font-weight: bold;
+	font-size:1.8em;
+	vertical-align: text-top;
+}
+.tab{
+  border: 1px solid #000000; 
+  background-color: #A9A9A9;
+  height: 230px;
+  position:relative;
+  text-align:center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.product-items {
+	line-height: 8px;
+	font-size: 1.1em;
+	/*text-transform: capitalize;*/
+	padding: 20px;
+}
+.product-items p:nth-child(1){
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.product-items p:nth-child(2){
+	line-height: 19px;
+}
+.product-items p:nth-child(4) {
+	line-height: 17px;
+}
+
+.title{
+	margin:0;
+	padding:2px 3px;
+	position:absolute;
+	top: 0;
+	left: 0;
+}
+.title2{
+	margin-top:10px;
+	padding:2px 3px;
+	position:absolute;
+	top: 0;
+	right: 0;
+	text-transform: uppercase;
+}
+input[type=checkbox]
+{
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  margin: 6px;
+  border-color: #DC3545;
+}
