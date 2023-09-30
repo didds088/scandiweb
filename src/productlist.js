@@ -3,7 +3,7 @@ import Product from './components/Product';
 import useDeleteProducts from "./hooks/useDeleteProducts";
 
 function ProductList() {
-  const {handleChange, deleteProducts, isDeleting, productKey} = useDeleteProducts();
+  const {handleCheck, deleteProducts, isDeleting, productKey} = useDeleteProducts();
  
   return (
     <div className='container pt-3 pt-md-4'>
@@ -21,8 +21,8 @@ function ProductList() {
     <hr className="border border-danger"/>
 
     <main className="min-vh-100">
-    <div className="position-relative row g-2 g-md-3">
-    <Product key={productKey} onchange={handleChange} />
+    <div className="row g-2 g-md-3">
+    <Product key={productKey} oncheck={handleCheck} />
     </div>
     </main>
 

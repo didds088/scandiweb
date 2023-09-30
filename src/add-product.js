@@ -57,9 +57,11 @@ const AddProduct = () => {
         obj[selectedValue]();
         setSelected(selectedValue);
     };
+    
     const handleSubmit = (event) =>{
-        check(values.sku)
         event.preventDefault();
+        check(values.sku);
+        
         const data = {
             name: values.name,
             sku: values.sku,

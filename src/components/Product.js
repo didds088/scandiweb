@@ -16,7 +16,7 @@ const Product = (props) =>{
             <section className="col-6 col-md-4" key={item.id}>
             <div className="tab">
             <div className="title">
-            <input className="form-check-input delete-checkbox" type="checkbox" name="option1" value={item.id} onChange = {props.onchange}/>
+            <input className="form-check-input delete-checkbox" type="checkbox" name="option1" value={item.id} onChange = {props.oncheck}/>
             </div>
             <div className="product-items">
             <p id={item.id}>{item.sku}</p>

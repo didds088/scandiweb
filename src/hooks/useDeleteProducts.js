@@ -5,7 +5,7 @@ const useDeleteProducts = () =>{
     const [isDeleting, setIsDeleting] = useState(false);
     const [allChecked, setAllChecked] = useState("");
 
-    const handleChange = (e) => {
+    const handleCheck = (e) => {
         if (e.target.checked) {
            setAllChecked([...allChecked, e.target.value]);
         } else {
@@ -49,7 +49,7 @@ const useDeleteProducts = () =>{
         )
     }
     return {
-        handleChange,
+        handleCheck,
         deleteProducts,
         isDeleting,
         productKey,
