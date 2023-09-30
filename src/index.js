@@ -7,7 +7,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import ProductList from './productlist';
 import ErrorPage from './error';
 import AddProduct from './add-product';
-import Add from './text';
 
 const router = createBrowserRouter([
   {
@@ -18,11 +17,6 @@ const router = createBrowserRouter([
   {
     path: "/add-product",
     element: <AddProduct />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/text",
-    element: <Add />,
     errorElement: <ErrorPage />,
   },
  

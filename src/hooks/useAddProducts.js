@@ -6,8 +6,7 @@ const useAddProducts = () => {
   const [isSaving, setIsSaving] = useState(false);
   const navigate = useNavigate();
 
-  const addProducts = (data,e) => {
-    e.preventDefault();
+  const addProducts = (data) => {
     setIsSaving(true);
 
     fetch('https://scandidds.000webhostapp.com/php/addproducts.php', {

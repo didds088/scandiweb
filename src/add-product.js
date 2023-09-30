@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState} from 'react';
 import useAddProducts from './hooks/useAddProducts';
-import useInputChange from './hooks/useInputsChange';
+import useHandleInputs from './hooks/useHandleInputs';
 
 
 const AddProduct = () => {
@@ -9,9 +9,10 @@ const AddProduct = () => {
   const [dvdIsHidden, setDvdIsHidden] = useState(true);
   const [furnitureIsHidden, setFurnitureIsHidden] = useState(true);
   const [bookIsHidden, setBookIsHidden] = useState(true);
-
-  const { values, handleInputChange } = useInputChange(); // Use the custom hook
-  const { isSaving,addProducts } = useAddProducts(); // Use the custom hook
+  const [formText, setFormText] = useState('');
+  
+  const { values, handleInputChange, check, isChecking, checkResponse} = useHandleInputs();
+  const { isSaving,addProducts } = useAddProducts(); 
 
     // CREATE OBJECT FOR SWITCHER
     const obj = {
@@ -57,6 +58,8 @@ const AddProduct = () => {
         setSelected(selectedValue);
     };
     const handleSubmit = (event) =>{
+        check(values.sku)
+        event.preventDefault();
         const data = {
             name: values.name,
             sku: values.sku,
@@ -64,7 +67,9 @@ const AddProduct = () => {
             type: values.type,
             measurement: values.measurement
         }
-        addProducts(data,event);
+        // Check if At least one property in data is empty or undefined
+        const isEmpty = Object.values(data).some(value => !value || value ==='undefined');
+        (!isEmpty) ? addProducts(data) : setFormText('Please, submit required data');
     }
   return (
     <form id="product_form" onSubmit={handleSubmit}>
@@ -86,23 +91,24 @@ const AddProduct = () => {
 
     <div className="col-12">
     <label htmlFor="sku" className="form-label">SKU</label>
-    <input type="text" className="form-control" id="sku" name="sku" value={values.sku || ""} onChange= {handleInputChange} />
-    <div id="help" className="form-text"><span id="skuHelp"></span><span id="avail"></span></div>
+    <input type="text" style={{textTransform:"uppercase"}} className="form-control" id="sku" name="sku" value={values.sku || ""} onChange= {handleInputChange} required/>
+    {isChecking? (<div className='form-text'><span className="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span> Checking Availability</div> ) : (<></>)} 
+    <div id="help" className="form-text text-danger"><span >{checkResponse}</span><span id="avail"></span></div>
     </div>
     
     <div className="col-12">
     <label htmlFor="name" className="form-label">Name</label>
-    <input type="text" className="form-control" id="name" name="name" value={values.name || ""} onChange= {handleInputChange} />
+    <input type="text" className="form-control" id="name" name="name" value={values.name || ""} onChange= {handleInputChange} onFocus={() => check(values.sku)} required/>
     </div>
 
     <div className="col-12">
     <label htmlFor="price" className="form-label">Price ($) </label>
-    <input type="number" className="form-control" id="price" name="price" value={values.price || ""} onChange= {handleInputChange} />
+    <input type="number" className="form-control" id="price" name="price" value={values.price || ""} onChange= {handleInputChange} required/>
     </div>
 
     <div className="col-12">
     <label htmlFor="productType" className="form-label">Type Switcher</label>
-    <select id="productType" className="form-select" aria-label="Default select example" value={selected} onChange={handleSelectChange}>
+    <select id="productType" className="form-select" aria-label="Default select example" value={selected} onChange={handleSelectChange} required>
     <option value="selectType">Select type</option>
     <option id="DVD" value="dvd">DVD</option>
     <option id="Furniture" value="furniture">Furniture</option>
@@ -141,7 +147,8 @@ const AddProduct = () => {
     </div>
 
     </div>
-    
+
+    <div className="form-text mb-2">{formText}</div>
     </div>
     
     </main>

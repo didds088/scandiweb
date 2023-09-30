@@ -46,5 +46,34 @@ class Database {
         echo json_encode($data);
     }
 
+    // CHECK IF SKU EXIST
+    public function check($sku){
+        $conn = $this->connect;
+        $sql = "SELECT * FROM products WHERE sku='$sku'";
+        $ret_data = mysqli_query($conn,$sql);
+        $rowcount=mysqli_num_rows($ret_data);
+        if ($rowcount > 0){
+            $data = array("exist");
+        }
+        else{
+            $data = array("!exist");
+        }
+        echo json_encode($data);
+    }
+
+    // CHECK IF DELETE PRODUCTS
+    public function delete($id){
+        $conn = $this->connect;
+        $sql = "DELETE FROM products WHERE id=$id";
+        $del_data = mysqli_query($conn,$sql);
+        if ($del_data){
+            $data = array("deleted");
+        }
+        else{
+            $data = array("!deleted");
+        }
+        echo json_encode($data);
+    }
+
 }
 ?>

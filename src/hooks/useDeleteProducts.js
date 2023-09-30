@@ -13,29 +13,38 @@ const useDeleteProducts = () =>{
         }  
     }
 
-    const deleteProducts = () =>{
+    const deleteProducts = (url) =>{
         setIsDeleting(true);
-        !allChecked? (setIsDeleting(false)) :(
+        !allChecked || allChecked.length === 0 ? (setIsDeleting(false)) : (
             allChecked.forEach((selected) => {
                let data= {
-                   type: "individual",
                    id:selected
                };
-               fetch('https://forex.fastpropfunding.com/php/index.php',{
+               fetch(url,{
                    method: 'post',
                    mode: "cors",
                    body: JSON.stringify(data)
                })
                .then(response => response.json())
                .then(json => {
-                   for(let n of json){
-                   // Increment productKey to trigger <Product /> re-render
-                   console.log(n)
-                   setProductKey(productKey + 1);
-                   setIsDeleting(false);
-                   setAllChecked("");
+                   for(let res of json){
+                    if(res === 'deleted'){
+                        // Increment productKey to trigger <Product /> re-render
+                        setProductKey(productKey + 1);
+                        setIsDeleting(false);
+                        setAllChecked("");
+                    }
+                    else{
+                        setIsDeleting(false);
+                        setAllChecked("");
+                    }
                    }
                })
+               .catch(error => {
+                    console.log(error);
+                    setIsDeleting(false);
+                    setAllChecked("");
+                })
             })
         )
     }
