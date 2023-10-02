@@ -9,6 +9,7 @@ const useDeleteProducts = () =>{
         if (e.target.checked) {
            setAllChecked([...allChecked, e.target.value]);
         } else {
+            // IF UNCHECKED removes the value of the checkbox from the allChecked array
            setAllChecked(allChecked.filter((item) => item !== e.target.value));
         }  
     }

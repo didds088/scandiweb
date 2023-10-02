@@ -1,7 +1,7 @@
 // useHandleInputChange.js
 import { useState } from 'react';
 
-function useHandleInputs() {
+export default function useHandleInputs() {
   const [values, setValues] = useState({});
   const [isChecking, setIsChecking] = useState(false);
   const [checkResponse, setCheckResponse] = useState('');
@@ -61,5 +61,3 @@ function useHandleInputs() {
 
   return { values, handleInputChange, check, isChecking, checkResponse};
 }
-
-export default useHandleInputs;
