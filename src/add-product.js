@@ -12,7 +12,7 @@ const AddProduct = () => {
   const [formText, setFormText] = useState('');
   
   const { values, handleInputChange, check, isChecking, checkResponse} = useHandleInputs();
-  const { isSaving,addProducts } = useAddProducts(); 
+  const { isSaving, addProducts} = useAddProducts(); 
 
     // CREATE OBJECT FOR SWITCHER
     const obj = {
@@ -60,8 +60,6 @@ const AddProduct = () => {
     
     const handleSubmit = (event) =>{
         event.preventDefault();
-        check(values.sku);
-        
         const data = {
             name: values.name,
             sku: values.sku,
@@ -93,14 +91,14 @@ const AddProduct = () => {
 
     <div className="col-12">
     <label htmlFor="sku" className="form-label">SKU</label>
-    <input type="text" style={{textTransform:"uppercase"}} className="form-control" id="sku" name="sku" value={values.sku || ""} onChange= {handleInputChange} required/>
+    <input type="text" style={{textTransform:"uppercase"}} className="form-control" id="sku" name="sku" value={values.sku || ""} onChange= {handleInputChange} onBlur={() => check(values.sku)} required/>
     {isChecking? (<div className='form-text'><span className="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span> Checking Availability</div> ) : (<></>)} 
     <div id="help" className="form-text text-danger"><span >{checkResponse}</span><span id="avail"></span></div>
     </div>
     
     <div className="col-12">
     <label htmlFor="name" className="form-label">Name</label>
-    <input type="text" className="form-control" id="name" name="name" value={values.name || ""} onChange= {handleInputChange} onFocus={() => check(values.sku)} required/>
+    <input type="text" className="form-control" id="name" name="name" value={values.name || ""} onChange= {handleInputChange}  required/>
     </div>
 
     <div className="col-12">
