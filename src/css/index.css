@@ -1,3 +1,8 @@
+:root {
+	--red: #DC3545;
+	--grey: #A9A9A9;
+	--dark: #000000;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,14 +15,14 @@ body {
 }
 #heading::first-letter {
 	font-family: cursive ;
-	color: #DC3545;
+	color: var(--red);
 	font-weight: bold;
 	font-size:1.8em;
 	vertical-align: text-top;
 }
 .tab{
-  border: 1px solid #000000; 
-  background-color: #A9A9A9;
+  border: 1px solid var(--dark); 
+  background-color: var(--grey);
   height: 230px;
   position:relative;
   text-align:center;
@@ -65,5 +70,5 @@ input[type=checkbox]
   -ms-transform: scale(1.5);
   -o-transform: scale(1.5);
   margin: 6px;
-  border-color: #DC3545;
+  border-color: var(--grey);
 }
