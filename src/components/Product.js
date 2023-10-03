@@ -2,15 +2,10 @@ import useFetchProducts from "../hooks/useFetchProducts";
 import Loader from "./Loader";
 
 const Product = (props) =>{
-  const {products, loading} = useFetchProducts('https://scandidds.000webhostapp.com/php/loadproducts.php');
-
+  const {products} = useFetchProducts('https://scandidds.000webhostapp.com/php/loadproducts.php');
     return(
        <>
-       {loading ? (
-       <Loader/>
-       ) : (
-        <>
-       {products &&
+       {(products &&
         products.map((item) => {
           return (
             <section className="col-6 col-md-4" key={item.id}>
@@ -27,10 +22,8 @@ const Product = (props) =>{
             </div>
             </section>
           )
-        })}
+        })) || <Loader /> }  
         </>
-        )}
-       </> 
     )
 }
 export default Product
