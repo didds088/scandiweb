@@ -69,6 +69,6 @@ input[type=checkbox]
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
   -o-transform: scale(1.5);
-  margin: 6px;
+  margin: 6px; 
   border-color: var(--grey);
 }
