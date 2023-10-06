@@ -7,8 +7,10 @@ require "index.php";
 $raw_data = file_get_contents('php://input');
 $Posts = json_decode($raw_data);
 $sku = $Posts -> sku;
-$db = new Database();
 
-$db->check($sku);    
+$product = new ProductManager();
+$product->setSku($sku);
+
+$product->check($sku);    
 
 ?>

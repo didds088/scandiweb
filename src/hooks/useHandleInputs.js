@@ -6,7 +6,9 @@ export default function useHandleInputs() {
   const [isChecking, setIsChecking] = useState(false);
   const [checkResponse, setCheckResponse] = useState('');
 
-  function handleInputChange(e) {
+  const regex = /^[a-zA-Z0-9.]+$/;
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     const inputValues = { ...values, [name]: value };
     
@@ -59,5 +61,5 @@ export default function useHandleInputs() {
     }
   }
 
-  return { values, handleInputChange, check, isChecking, checkResponse};
+  return { regex, values, handleInputChange, check, isChecking, checkResponse};
 }

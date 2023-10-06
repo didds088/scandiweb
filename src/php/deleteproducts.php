@@ -7,8 +7,9 @@ require "index.php";
 $raw_data = file_get_contents('php://input');
 $Posts = json_decode($raw_data);
 $id = $Posts -> id;
-$db = new Database();
 
-$db->delete($id);    
+$product = new ProductManager();
+$product->setID($id);
+$product->delete($id);    
 
 ?>

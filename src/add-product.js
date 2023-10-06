@@ -11,7 +11,7 @@ const AddProduct = () => {
   const [bookIsHidden, setBookIsHidden] = useState(true);
   const [formText, setFormText] = useState('');
   
-  const { values, handleInputChange, check, isChecking, checkResponse} = useHandleInputs();
+  const { regex, values, handleInputChange, check, isChecking, checkResponse} = useHandleInputs();
   const { isSaving, addProducts} = useAddProducts(); 
 
     // CREATE OBJECT FOR SWITCHER
@@ -51,7 +51,7 @@ const AddProduct = () => {
             values["unit"]="KG";
         }
     };
-
+    
     const handleSelectChange = (e) => {
         const selectedValue = e.target.value;
         obj[selectedValue]();
@@ -61,14 +61,19 @@ const AddProduct = () => {
     const handleSubmit = (event) =>{
         event.preventDefault();
         const data = {
-            name: values.name,
-            sku: values.sku,
-            price: values.price,
-            type: values.type,
-            measurement: values.measurement
+            // name: values.name,
+            // sku: values.sku,
+            // price: values.price,
+            // type: values.type,
+            // measurement: values.measurement
+            name: 'dvd1',
+            sku: 'dvd1',
+            price: '2',
+            type: 'Size',
+            measurement: '3mb'
         }
         // Check if At least one property in data is empty or undefined
-        const isEmpty = Object.values(data).some(value => !value || value ==='undefined');
+        const isEmpty = Object.values(data).some(value => !value || regex.test(value)===false);
         (!isEmpty) ? addProducts(data) : setFormText('Please, submit required data');
     }
   return (
@@ -76,6 +81,9 @@ const AddProduct = () => {
     <div className='container p-3 p-md-4'>
     <div className="float-start">
     <h1 id="heading">Product Add</h1>
+    <button type="button" className="btn btn-primary me-3" onClick={handleSubmit} disabled={isSaving}>
+    {isSaving? (<><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </> ) : (<></>)} 
+    Save</button>
     </div>
     <div className='float-end'>
     <button type="submit" className="btn btn-primary me-3" disabled={isSaving}>
@@ -85,14 +93,14 @@ const AddProduct = () => {
     </div> 
     <div className='clearfix'></div>
     <hr className="border border-danger"/>
-    <main className="min-vh-100 position-relative">
+    <main className="min-vh-100 animate__animated animate__fadeIn">
     
     <div className="row gy-4">
 
     <div className="col-12">
     <label htmlFor="sku" className="form-label">SKU</label>
     <input type="text" style={{textTransform:"uppercase"}} className="form-control" id="sku" name="sku" value={values.sku || ""} onChange= {handleInputChange} onBlur={() => check(values.sku)} required/>
-    {isChecking? (<div className='form-text'><span className="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span> Checking Availability</div> ) : (<></>)} 
+    {isChecking? (<div className='form-text'><span className="spinner-border spinner-border-sm text-snow" role="status" aria-hidden="true"></span> Checking Availability</div> ) : (<></>)} 
     <div id="help" className="form-text text-danger"><span >{checkResponse}</span><span id="avail"></span></div>
     </div>
     
@@ -148,7 +156,7 @@ const AddProduct = () => {
 
     </div>
 
-    <div className="form-text mb-2">{formText}</div>
+    <div className="form-text mb-2 text-danger fs-5">{formText}</div>
     </div>
     
     </main>

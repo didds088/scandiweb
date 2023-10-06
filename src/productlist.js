@@ -15,7 +15,7 @@ function ProductList() {
     <Link className="link btn btn-secondary me-3" to="/add-product">ADD</Link>
     <button type="button" id='delete-product-btn' className="btn btn-danger" disabled={isDeleting} onClick={() => deleteProducts('https://scandidds.000webhostapp.com/php/deleteproducts.php')}>
     {isDeleting? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> : <></>} 
-    MASS DELETE
+    <span> MASS DELETE</span>
     </button>
     </div> 
     <div className='clearfix'></div>

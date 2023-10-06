@@ -1,14 +1,16 @@
 :root {
 	--red: #DC3545;
 	--grey: #A9A9A9;
-	--dark: #000000;
+	--dark: #36454F;
+	--snow: #74a9b9;
+	--light-red: #fe7e86;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .hidden{
 	display: none !important;
@@ -21,14 +23,19 @@ body {
 	vertical-align: text-top;
 }
 .tab{
-  border: 1px solid var(--dark); 
-  background-color: var(--grey);
-  height: 230px;
-  position:relative;
-  text-align:center;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+	border: 1px solid var(--dark);
+	background-color: var(--grey);
+	height: 230px;
+	position:relative;
+	text-align:center;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
 }
 .product-items {
 	line-height: 8px;
@@ -64,11 +71,18 @@ body {
 }
 input[type=checkbox]
 {
-  transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  -moz-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  -o-transform: scale(1.5);
-  margin: 6px; 
-  border-color: var(--grey);
+	transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+	-moz-transform: scale(1.5);
+	-ms-transform: scale(1.5);
+	-o-transform: scale(1.5);
+	margin: 6px; 
+	border-color: var(--grey);
+}
+.text-red {
+	color: var(--red);
+}
+.btn-snow {
+	background-color: var(--grey) !important;
+	color: #fff !important;
 }

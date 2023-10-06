@@ -6,13 +6,18 @@ require "index.php";
 
 $raw_data = file_get_contents('php://input');
 $Posts = json_decode($raw_data);
-$inputName = $Posts -> name;
-$inputSku = $Posts -> sku;
-$inputPrice = $Posts -> price;
-$inputType = $Posts -> type;
-$inputMeasurement = $Posts -> measurement;
-$db = new Database();
+$inputName = $Posts->name;
+$inputSku = $Posts->sku;
+$inputPrice = $Posts->price;
+$inputType = $Posts->type;
+$inputMeasurement = $Posts->measurement;
 
-$db->add($inputName,$inputSku,$inputPrice,$inputType,$inputMeasurement);    
+$product = new ProductManager();
 
+$product->setName($inputName);
+$product->setSku($inputSku);
+$product->setPrice($inputPrice);
+$product->setType($inputType);
+$product->setMeasurement($inputMeasurement);
+$product->add();
 ?>
