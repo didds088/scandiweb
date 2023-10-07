@@ -3,6 +3,7 @@ import { useState } from 'react';
 export default function useHandleInputs() {
   const [values, setValues] = useState({});
   const [isChecking, setIsChecking] = useState(false);
+  const [checked, setChecked] = useState(false);
   const [checkResponse, setCheckResponse] = useState('');
 
   const regex = /^[a-zA-Z0-9. ]+$/;
@@ -44,12 +45,14 @@ export default function useHandleInputs() {
       .then(data => {
         for(let item of data){
           setIsChecking(false);
+          setChecked(false);
           if(item==='exist'){
             setCheckResponse(`${inputSku} already exist`);
             resetForm();
           }
           else{
             setCheckResponse('');
+            setChecked(true);
           }
         }
       })
@@ -60,5 +63,5 @@ export default function useHandleInputs() {
     }
   }
 
-  return { regex, values, handleInputChange, check, isChecking, checkResponse};
+  return { regex, values, handleInputChange, check, isChecking, checkResponse, checked};
 }

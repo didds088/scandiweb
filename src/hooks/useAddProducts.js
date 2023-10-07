@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const useAddProducts = () => {
   const [isSaving, setIsSaving] = useState(false);
-  // const [checkResponse2, setCheckResponse2] = useState('');
   const navigate = useNavigate();
+  // const [checkResponse2, setCheckResponse2] = useState('');
+  
 
   // const submitProducts = (data) =>{
   //   setIsSaving(true);
@@ -46,8 +47,7 @@ const useAddProducts = () => {
 
   return {
     isSaving, 
-    addProducts, 
-    // checkResponse2
+    addProducts,
   };
 }
 
