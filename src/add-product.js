@@ -61,17 +61,19 @@ const AddProduct = () => {
     const handleSubmit = (event) =>{
         event.preventDefault();
         const data = {
-            // name: values.name,
-            // sku: values.sku,
-            // price: values.price,
-            // type: values.type,
-            // measurement: values.measurement
-            name: 'dvd1',
-            sku: 'dvd1',
-            price: '2',
-            type: 'Size',
-            measurement: '3mb'
+            name: values.name,
+            sku: values.sku,
+            price: values.price,
+            type: values.type,
+            measurement: values.measurement
         }
+        // const data2 = {
+        //     name: 'dvd1',
+        //     sku: 'dvd1',
+        //     price: '2',
+        //     type: 'Size',
+        //     measurement: '3mb'
+        // }
         // Check if At least one property in data is empty or undefined
         const isEmpty = Object.values(data).some(value => !value || regex.test(value)===false);
         (!isEmpty) ? addProducts(data) : setFormText('Please, submit required data');
@@ -81,9 +83,9 @@ const AddProduct = () => {
     <div className='container p-3 p-md-4'>
     <div className="float-start">
     <h1 id="heading">Product Add</h1>
-    <button type="button" className="btn btn-primary me-3" onClick={handleSubmit} disabled={isSaving}>
+    {/* <button type="button" className="btn btn-primary me-3" onClick={handleSubmit} disabled={isSaving}>
     {isSaving? (<><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </> ) : (<></>)} 
-    Save</button>
+    Save</button> */}
     </div>
     <div className='float-end'>
     <button type="submit" className="btn btn-primary me-3" disabled={isSaving}>
@@ -129,29 +131,29 @@ const AddProduct = () => {
     <div id="dvd-grp" className={dvdIsHidden ? 'hidden' : ''}>
     <div id="sizehelp" className="form-text mb-2">Please, provide size</div>
     <label htmlFor="size" className="form-label">Size (MB) </label>
-    <input type="number" className="form-control" id="size" name="size" value={values.size || ""} onChange= {handleInputChange} />
+    <input type="number" step="any" className="form-control" id="size" name="size" value={values.size || ""} onChange= {handleInputChange} />
     </div>
 
     <div id="furniture-grp" className={furnitureIsHidden ? 'hidden' : ''}>
     <div className="form-text mb-2">Please, provide dimensions</div>
     <div className="mb-3">
     <label htmlFor="height" className="form-label">Height (CM)</label>
-    <input type="number" className="form-control" id="height" name="height" value={values.height || ""} onChange= {handleInputChange} />
+    <input type="number" step="any" className="form-control" id="height" name="height" value={values.height || ""} onChange= {handleInputChange}/>
     </div>
     <div className="mb-3">
     <label htmlFor="width" className="form-label">Width (CM) </label>
-    <input type="number" className="form-control" id="width" name="width" value={values.width || ""} onChange= {handleInputChange}/>
+    <input type="number" step="any" className="form-control" id="width" name="width" value={values.width || ""} onChange= {handleInputChange}/>
     </div>
     <div className="mb-3">
     <label htmlFor="length" className="form-label">Length (CM) </label>
-    <input type="number" className="form-control" id="length" name="length" value={values.length || ""} onChange= {handleInputChange} />
+    <input type="number" step="any" className="form-control" id="length" name="length" value={values.length || ""} onChange= {handleInputChange}/>
     </div>
     </div>
 
     <div id="book-grp" className={bookIsHidden ? 'hidden' : ''}>
     <div className="form-text mb-2">Please, provide weight</div>
     <label htmlFor="weight" className="form-label">Weight (KG) </label>
-    <input type="number" className="form-control" id="weight" name="weight" value={values.weight || ""} onChange= {handleInputChange} />
+    <input type="number" step="any" className="form-control" id="weight" name="weight" value={values.weight || ""} onChange= {handleInputChange} />
     </div>
 
     </div>

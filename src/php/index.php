@@ -85,6 +85,7 @@ abstract class Product extends Database {
 
 class ProductManager extends Product {
 
+    // ADD NEW PRODUCTS
     public function add() {
         $conn = $this->getConnection();
         $name = $this->getName();
@@ -105,6 +106,7 @@ class ProductManager extends Product {
         echo json_encode($data);
     }
 
+    // CHECK IF SKU EXIST
     public function check(){
         $conn = $this->getConnection();
         $sku = $this->getSku();
@@ -125,6 +127,7 @@ class ProductManager extends Product {
         echo json_encode($data);
     }
 
+    // DELETE PRODUCTS
     public function delete() {
         $conn = $this->getConnection();
         $id = $this->getID();
@@ -144,6 +147,7 @@ class ProductManager extends Product {
 
 class DisplayManager extends Database{
 
+    //LOAD PRODUCTS
     public function load(){
         $conn = $this->connect;
         $data = array();

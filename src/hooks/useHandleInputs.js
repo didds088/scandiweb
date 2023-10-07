@@ -1,4 +1,3 @@
-// useHandleInputChange.js
 import { useState } from 'react';
 
 export default function useHandleInputs() {
@@ -6,7 +5,7 @@ export default function useHandleInputs() {
   const [isChecking, setIsChecking] = useState(false);
   const [checkResponse, setCheckResponse] = useState('');
 
-  const regex = /^[a-zA-Z0-9.]+$/;
+  const regex = /^[a-zA-Z0-9. ]+$/;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
