@@ -61,15 +61,8 @@ body {
 	top: 0;
 	left: 0;
 }
-.title2{
-	margin-top:10px;
-	padding:2px 3px;
-	position:absolute;
-	top: 0;
-	right: 0;
-	text-transform: uppercase;
-}
-input[type=checkbox]
+
+input[type=checkbox], .skeletonCheck
 {
 	transform: scale(1.5);
 	-webkit-transform: scale(1.5);
