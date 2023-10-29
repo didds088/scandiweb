@@ -8,7 +8,8 @@ const useFetchProducts = (url) =>{
       fetch(url)
         .then(response => response.json())
         .then(data => {
-          setProducts(data);
+          const sortData = data.sort((a,b) => b.id-a.id); // Sort products
+          setProducts(sortData);
           setLoading(false);
         })
         .catch(error => console.log(error))
